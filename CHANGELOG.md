@@ -1,6 +1,6 @@
 # Flutter Preview Plugin Changelog
 
-## [Unreleased]
+## [Unreleased] [1.0.1]
 ### Added
 - Work in progress
 
