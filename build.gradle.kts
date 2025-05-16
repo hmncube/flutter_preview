@@ -1,11 +1,8 @@
 import org.jetbrains.changelog.Changelog
-import org.jetbrains.changelog.ChangelogSectionUrlBuilder
-import org.jetbrains.changelog.date
 
 fun properties(key: String) = project.findProperty(key).toString()
 
 fun getFullVersion() = "${properties("appVersion")}-${properties("appPlatformVersion")}"
-
 
 plugins {
     id("java")
