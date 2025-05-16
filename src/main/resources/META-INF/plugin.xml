@@ -22,6 +22,12 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
     </extensions>
+    <actions>
+        <action id="com.hmncube.flutterpreview.FlutterPreviewAction"
+                class="com.hmncube.flutterpreview.FlutterPreviewAction" text="Flutter Preview"
+                description="Preview flutter UI">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
