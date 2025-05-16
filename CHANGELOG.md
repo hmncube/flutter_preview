@@ -1,9 +1,9 @@
-# Flutter Preview Plugin Changelog
+# Flutter preview Plugin Changelog
 
-## [Unreleased] [1.0.1]
-### Added
-- Work in progress
+## [Unreleased]
 
 ## [1.0.0] - 2025-05-16
+
 ### Added
-- Added dummy code and UI to test
+
+- Project setup
