@@ -45,16 +45,23 @@ tasks {
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "17"
     }
+
     patchPluginXml {
-        changeNotes.set(provider {
-            changelog.renderItem(
-                changelog
-                    .getUnreleased()
-                    .withHeader(false)
-                    .withEmptySections(false),
-                Changelog.OutputType.HTML
-            )
-        })
+        version = getFullVersion()
+        sinceBuild.set(properties("pluginSinceBuild"))
+
+        // Get the latest available change notes from the changelog file
+        changeNotes.set(
+            provider {
+                with(changelog) {
+                    renderItem(
+                        getOrNull(properties("appVersion"))
+                            ?: runCatching { getLatest() }.getOrElse { getUnreleased() },
+                        Changelog.OutputType.HTML
+                    )
+                }
+            }
+        )
     }
 /*
     signPlugin {
