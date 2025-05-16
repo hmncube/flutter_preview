@@ -6,6 +6,7 @@ fun properties(key: String) = project.findProperty(key).toString()
 
 fun getFullVersion() = "${properties("appVersion")}-${properties("appPlatformVersion")}"
 
+
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
@@ -31,26 +32,8 @@ intellij {
 }
 
 changelog {
-    version.set("1.0.0")
-    path.set(file("CHANGELOG.md").canonicalPath)
-    header.set(provider { "[${version.get()}] - ${date()}" })
-    headerParserRegex.set("""(\d+\.\d+)""".toRegex())
-    introduction.set(
-        """
-        My awesome project that provides a lot of useful features, like:
-        
-        - Feature 1
-        - Feature 2
-        - and Feature 3
-        """.trimIndent()
-    )
-    itemPrefix.set("-")
-    keepUnreleasedSection.set(true)
-    unreleasedTerm.set("[Unreleased]")
-    groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
-    lineSeparator.set("\n")
-    combinePreReleases.set(true)
-    sectionUrlBuilder.set(ChangelogSectionUrlBuilder { repositoryUrl, currentVersion, previousVersion, isUnreleased -> "foo" })
+    groups.set(emptyList())
+    repositoryUrl.set(properties("pluginRepositoryUrl"))
 }
 
 tasks {
