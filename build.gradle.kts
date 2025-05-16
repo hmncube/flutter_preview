@@ -69,7 +69,7 @@ tasks {
 
     publishPlugin {
         dependsOn("patchPluginXml")
-        token.set(providers.environmentVariable("ORG_GRADLE_PROJECT_intellijPublishToken"))
+        token.set(providers.environmentVariable("ORG_GRADLE_PROJECT_INTELLIJ_PUBLISH_TOKEN"))
         // token.set(System.getenv("ORG_GRADLE_PROJECT_intellijPublishToken"))
         channels.set(listOf("default"))
     }
