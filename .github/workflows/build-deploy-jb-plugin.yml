@@ -31,7 +31,15 @@ jobs:
       # Build the plugin
       - name: Build plugin
         run: ./gradlew buildPlugin
-
+        
+      - name: Debug - Check Secret Availability
+        run: |
+          if [ -n "${{ secrets.INTELLIJ_PUBLISH_TOKEN }}" ]; then
+            echo "Secret is available (not showing actual value)"
+          else
+            echo "Secret is NOT available!"
+          fi
+    
       # Publish the plugin to JetBrains Marketplace
       - name: Publish plugin
         run: ./gradlew publishPlugin -PintellijPlatformPublishingToken=${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
