@@ -36,5 +36,5 @@ jobs:
       - name: Publish plugin
         run: ./gradlew publishPlugin
         env:
-          INTELLIJ_PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
-          # ORG_GRADLE_PROJECT_intellijPublishToken: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
+          # INTELLIJ_PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
+          ORG_GRADLE_PROJECT_intellijPublishToken: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
