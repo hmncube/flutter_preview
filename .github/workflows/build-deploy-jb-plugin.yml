@@ -11,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Extract Java version from build.gradle
+      - name: Extract Java version from build.gradle.kts
         id: extract-java-version
         run: |
-          JAVA_VERSION=$(grep -oP "javaVersion\s*=\s*'\K[0-9]+" build.gradle || echo "11")
-          echo "java-version=$JAVA_VERSION" >> $GITHUB_ENV
+            JAVA_VERSION=$(grep -oP "sourceCompatibility\s*=\s*\"?\K[0-9]+" build.gradle.kts || echo "11")
+            echo "java-version=$JAVA_VERSION" >> $GITHUB_ENV
 
       - name: Set up JDK
         uses: actions/setup-java@v3
