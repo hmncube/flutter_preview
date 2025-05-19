@@ -32,7 +32,7 @@ jobs:
         run: |
           ./gradlew check
           ./gradlew runPluginVerifier
-
+          ./gradlew publishPlugin
         env:
             ORG_GRADLE_PROJECT_intellijPublishToken: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
             CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
