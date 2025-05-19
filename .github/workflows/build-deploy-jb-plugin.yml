@@ -11,10 +11,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Extract Java version from build.gradle
+        id: extract-java-version
+        run: |
+          JAVA_VERSION=$(grep -oP "javaVersion\s*=\s*'\K[0-9]+" build.gradle || echo "11")
+          echo "java-version=$JAVA_VERSION" >> $GITHUB_ENV
+
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: ${{ env.java-version }}
           distribution: 'temurin'
 
       - name: Cache Gradle dependencies
@@ -32,7 +38,6 @@ jobs:
         run: |
           ./gradlew check
           ./gradlew runPluginVerifier
-          ./gradlew publishPlugin
         env:
             ORG_GRADLE_PROJECT_intellijPublishToken: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
             CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
